@@ -1,6 +1,6 @@
 FROM inteliotdevkit/intel-iot-yocto
 MAINTAINER Paolo Bosetti
-LABEL name=edison-crossbuild
+LABEL name=edison-build
 VOLUME /root/build
 WORKDIR /root/build
 COPY bash_profile /root/.bash_profile
