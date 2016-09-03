@@ -9,7 +9,8 @@ RUN opkg update && \
                libyaml-0-2 libyaml-0-dev \
                libpcre1 libpcre-dev && \
   gem install pry erubis --no-rdoc --no-ri && \
-  rm -rf /tmp/opkg-*/
+  rm -rf /tmp/opkg-*/ && \
+  source /root/.bash_profile
 # RUN apt-get update && apt-get install -y \
 #   bsdmainutils \
 #   build-essential clang bison cmake \
