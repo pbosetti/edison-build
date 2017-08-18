@@ -1,4 +1,4 @@
-FROM inteliotdevkit/intel-iot-yocto
+FROM inteliotdevkit/intel-iot-yocto:latest
 MAINTAINER Paolo Bosetti
 LABEL name=edison-build
 VOLUME /root/build
@@ -7,7 +7,7 @@ COPY bash_profile /root/.bash_profile
 RUN opkg update && \
   opkg install ruby ruby-dev bison bison-dev cmake \
                libyaml-0-2 libyaml-0-dev \
-               libpcre1 libpcre-dev && \
+               libpcre1 libpcre-dev glibc-utils tar && \
   gem install pry erubis --no-rdoc --no-ri && \
   rm -rf /tmp/opkg-*/
 # RUN apt-get update && apt-get install -y \
