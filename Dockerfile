@@ -5,12 +5,16 @@ VOLUME /root/build
 WORKDIR /root/build
 COPY bash_profile /root/.bash_profile
 RUN opkg update && \
-  opkg install ruby ruby-dev bison bison-dev cmake \
-               libyaml-0-2 libyaml-0-dev \
-               libpcre1 libpcre-dev glibc-utils tar && \
-  gem install pry erubis --no-rdoc --no-ri && \
-  rm -rf /tmp/opkg-*/ && \
-  source /root/.bash_profile
+    opkg install ruby ruby-dev bison bison-dev cmake \
+    libyaml-0-2 libyaml-0-dev \
+    libpcre1 libpcre-dev glibc-utils tar
+RUN git clone --depth 1 https://github.com/ruby/ruby &&\
+    cd ruby &&\
+    autoconf && ./configure &&\
+    make && make install
+RUN gem install rake pry erubis --no-rdoc --no-ri && \
+    rm -rf /tmp/opkg-*/ && \
+    source /root/.bash_profile
 # RUN apt-get update && apt-get install -y \
 #   bsdmainutils \
 #   build-essential clang bison cmake \
